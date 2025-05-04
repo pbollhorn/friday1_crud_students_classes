@@ -1,4 +1,4 @@
-export default function PersonForm() {
+export default function StudentForm() {
   return (
     <>
       <form>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import PersonForm from "./components/PersonForm";
+import StudentForm from "./components/StudentForm";
 import StudentList from "./components/StudentList";
 import { fetchData } from "./utils/fetchData";
 
@@ -57,7 +57,7 @@ function App() {
   return (
     <>
       {JSON.stringify(currentStudent)}
-      <PersonForm />
+      <StudentForm />
       <StudentList
         classes={classes}
         students={students}
