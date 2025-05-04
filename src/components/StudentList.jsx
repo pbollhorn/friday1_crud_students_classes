@@ -1,5 +1,4 @@
-export default function StudentList({ classes, students }) {
-
+export default function StudentList({ classes, students, deleteStudent }) {
   return (
     <table>
       <thead>
@@ -26,7 +25,7 @@ export default function StudentList({ classes, students }) {
             </td>
             <td>
               <button>Edit</button>
-              <button>Delete</button>
+              <button onClick={() => deleteStudent(student.id)}>Delete</button>
             </td>
           </tr>
         ))}
