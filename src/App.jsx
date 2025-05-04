@@ -72,6 +72,7 @@ function App() {
 
   function createOrUpdateCurrentStudent() {
     if (currentStudent.id === "") {
+      setCurrentStudent({ ...currentStudent, id: crypto.randomUUID() });
       createStudent();
     } else {
       updateStudentById(currentStudent.id);
