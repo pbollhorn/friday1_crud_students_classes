@@ -1,4 +1,5 @@
-export default function StudentList() {
+export default function StudentList({ classes, students }) {
+
   return (
     <table>
       <thead>
@@ -12,17 +13,23 @@ export default function StudentList() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Alice</td>
-          <td>20</td>
-          <td>alice@example.com</td>
-          <td>Math 101, History 201</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
+        {students.map((student) => (
+          <tr key={student.id}>
+            <td>{student.id}</td>
+            <td>{student.name}</td>
+            <td>{student.age}</td>
+            <td>{student.email}</td>
+            <td>
+              {student.classes.map(
+                (classId) => classes[classId - 1].name + ", "
+              )}
+            </td>
+            <td>
+              <button>Edit</button>
+              <button>Delete</button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
