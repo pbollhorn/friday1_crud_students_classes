@@ -56,8 +56,7 @@ function App() {
 
   return (
     <>
-      {JSON.stringify(currentStudent)}
-      <StudentForm currentStudent={currentStudent}/>
+      <StudentForm currentStudent={currentStudent} setCurrentStudent={setCurrentStudent}/>
       <StudentList
         classes={classes}
         students={students}

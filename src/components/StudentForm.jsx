@@ -1,23 +1,29 @@
-export default function StudentForm({ currentStudent }) {
+export default function StudentForm({ currentStudent, setCurrentStudent }) {
+  function handleChange(event) {
+    const id = event.target.id;
+    const value = event.target.value;
+    setCurrentStudent({ ...currentStudent, [id]: value });
+  }
+
   return (
     <>
+      {JSON.stringify(currentStudent)}
       <form>
-        <label htmlFor="id">Id</label>
-        <input
-          id="id"
-          type="number"
-          readOnly
-          placeholder="id"
-          value={currentStudent.id}
-        />
-        <label htmlFor="name">Name</label>
+        <b>Id</b>
+        {" "+currentStudent.id+" "}
+        <b>
+          <label htmlFor="name">Name</label>
+        </b>
         <input
           id="name"
           type="text"
           placeholder="Enter name"
           value={currentStudent.name}
+          onChange={handleChange}
         />
-        <label htmlFor="age">Age</label>
+        <b>
+          <label htmlFor="age">Age</label>
+        </b>
         <input
           id="age"
           type="number"
@@ -25,13 +31,17 @@ export default function StudentForm({ currentStudent }) {
           max="120"
           placeholder="Enter age"
           value={currentStudent.age}
+          onChange={handleChange}
         />
-        <label htmlFor="email">Email</label>
+        <b>
+          <label htmlFor="email">Email</label>
+        </b>
         <input
           id="email"
           type="email"
           placeholder="Enter email"
           value={currentStudent.email}
+          onChange={handleChange}
         />
         {/* <label htmlFor="class">Class</label>
         <select id="class">
