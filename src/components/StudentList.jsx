@@ -1,4 +1,9 @@
-export default function StudentList({ classes, students, deleteStudent }) {
+export default function StudentList({
+  classes,
+  students,
+  editStudentById,
+  deleteStudentById,
+}) {
   return (
     <table>
       <thead>
@@ -24,8 +29,10 @@ export default function StudentList({ classes, students, deleteStudent }) {
               )}
             </td>
             <td>
-              <button>Edit</button>
-              <button onClick={() => deleteStudent(student.id)}>Delete</button>
+              <button onClick={() => editStudentById(student.id)}>Edit</button>
+              <button onClick={() => deleteStudentById(student.id)}>
+                Delete
+              </button>
             </td>
           </tr>
         ))}

@@ -4,10 +4,18 @@ import PersonForm from "./components/PersonForm";
 import StudentList from "./components/StudentList";
 import { fetchData } from "./utils/fetchData";
 
+const blankStudent = {
+  id: "",
+  name: "",
+  age: "",
+  email: "",
+  classes: [],
+};
+
 function App() {
   const [classes, setClasses] = useState([]);
   const [students, setStudents] = useState([]);
-  const [currentStudent, setCurrentStudent] = useState({});
+  const [currentStudent, setCurrentStudent] = useState(blankStudent);
 
   useEffect(() => {
     const fun = async () => {
@@ -29,20 +37,32 @@ function App() {
     return data;
   }
 
-  async function deleteStudent(studentId) {
+  async function getStudentById(studentId) {
+    const response = await fetch("http://localhost:3000/students/" + studentId);
+    const data = await response.json();
+    return data;
+  }
+
+  async function deleteStudentById(studentId) {
     await fetch("http://localhost:3000/students/" + studentId, {
       method: "DELETE",
     });
     setStudents(await fetchStudents());
   }
 
+  async function editStudentById(studentId) {
+    setCurrentStudent(await getStudentById(studentId));
+  }
+
   return (
     <>
+      {JSON.stringify(currentStudent)}
       <PersonForm />
       <StudentList
         classes={classes}
         students={students}
-        deleteStudent={deleteStudent}
+        editStudentById={editStudentById}
+        deleteStudentById={deleteStudentById}
       />
     </>
   );
