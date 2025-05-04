@@ -50,13 +50,42 @@ function App() {
     setStudents(await fetchStudents());
   }
 
+  async function updateStudentById(studentId) {
+    await fetch("http://localhost:3000/students/" + studentId, {
+      method: "PUT",
+      body: JSON.stringify(currentStudent),
+    });
+    setStudents(await fetchStudents());
+  }
+
+  async function createStudent() {
+    await fetch("http://localhost:3000/students/", {
+      method: "POST",
+      body: JSON.stringify(currentStudent),
+    });
+    setStudents(await fetchStudents());
+  }
+
   async function editStudentById(studentId) {
     setCurrentStudent(await getStudentById(studentId));
   }
 
+  function createOrUpdateCurrentStudent() {
+    if (currentStudent.id === "") {
+      createStudent();
+    } else {
+      updateStudentById(currentStudent.id);
+    }
+  }
+
   return (
     <>
-      <StudentForm currentStudent={currentStudent} setCurrentStudent={setCurrentStudent}/>
+      <StudentForm
+        currentStudent={currentStudent}
+        setCurrentStudent={setCurrentStudent}
+        blankStudent={blankStudent}
+        createOrUpdateCurrentStudent={createOrUpdateCurrentStudent}
+      />
       <StudentList
         classes={classes}
         students={students}

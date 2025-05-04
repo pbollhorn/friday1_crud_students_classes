@@ -1,8 +1,17 @@
-export default function StudentForm({ currentStudent, setCurrentStudent }) {
+export default function StudentForm({
+  currentStudent,
+  setCurrentStudent,
+  blankStudent,
+  createOrUpdateCurrentStudent,
+}) {
   function handleChange(event) {
     const id = event.target.id;
     const value = event.target.value;
     setCurrentStudent({ ...currentStudent, [id]: value });
+  }
+
+  function clearFields() {
+    setCurrentStudent(blankStudent);
   }
 
   return (
@@ -10,7 +19,7 @@ export default function StudentForm({ currentStudent, setCurrentStudent }) {
       {JSON.stringify(currentStudent)}
       <form>
         <b>Id</b>
-        {" "+currentStudent.id+" "}
+        {" " + currentStudent.id + " "}
         <b>
           <label htmlFor="name">Name</label>
         </b>
@@ -49,8 +58,8 @@ export default function StudentForm({ currentStudent, setCurrentStudent }) {
           <option value="History 201">History 201</option>
         </select> */}
       </form>
-      <button>Create/Update</button>
-      <button>Clear fields</button>
+      <button onClick={createOrUpdateCurrentStudent}>Create/Update</button>
+      <button onClick={clearFields}>Clear fields</button>
     </>
   );
 }
