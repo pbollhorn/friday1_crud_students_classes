@@ -12,11 +12,11 @@ function App() {
     fetchData("http://localhost:3000/classes", (data) => {
       setClasses(data);
       console.log(data);
-    });
 
-    fetchData("http://localhost:3000/students", (data) => {
-      setStudents(data);
-      console.log(data);
+      fetchData("http://localhost:3000/students", (data) => {
+        setStudents(data);
+        console.log(data);
+      });
     });
   }, []); // Empty dependency array means this runs once on mount
 
