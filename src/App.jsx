@@ -73,7 +73,8 @@ function App() {
     setCurrentStudent(await getStudentById(studentId));
   }
 
-  function createOrUpdateCurrentStudent() {
+  function createOrUpdateCurrentStudent(event) {
+    event.preventDefault();
     if (currentStudent.id === "") {
       createStudent();
     } else {

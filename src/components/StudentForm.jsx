@@ -13,7 +13,7 @@ export default function StudentForm({
   return (
     <>
       {JSON.stringify(currentStudent)}
-      <form>
+      <form onSubmit={createOrUpdateCurrentStudent}>
         <b>Id</b>
         {" " + currentStudent.id + " "}
         <b>
@@ -53,8 +53,8 @@ export default function StudentForm({
           <option value="Math 101">Math 101</option>
           <option value="History 201">History 201</option>
         </select> */}
+        <button type="submit">Create/Update</button>
       </form>
-      <button onClick={createOrUpdateCurrentStudent}>Create/Update</button>
       <button onClick={clearFields}>Clear fields</button>
     </>
   );
