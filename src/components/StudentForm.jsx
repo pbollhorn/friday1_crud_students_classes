@@ -1,17 +1,13 @@
 export default function StudentForm({
   currentStudent,
   setCurrentStudent,
-  blankStudent,
   createOrUpdateCurrentStudent,
+  clearFields,
 }) {
   function handleChange(event) {
     const id = event.target.id;
     const value = event.target.value;
     setCurrentStudent({ ...currentStudent, [id]: value });
-  }
-
-  function clearFields() {
-    setCurrentStudent(blankStudent);
   }
 
   return (

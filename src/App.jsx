@@ -59,10 +59,9 @@ function App() {
   }
 
   async function createStudent() {
-    
-    let studentToCreate = {...currentStudent};
+    let studentToCreate = { ...currentStudent };
     delete studentToCreate.id;
-    
+
     await fetch("http://localhost:3000/students/", {
       method: "POST",
       body: JSON.stringify(studentToCreate),
@@ -80,6 +79,12 @@ function App() {
     } else {
       updateStudentById(currentStudent.id);
     }
+
+    clearFields();
+  }
+
+  function clearFields() {
+    setCurrentStudent(blankStudent);
   }
 
   return (
@@ -87,8 +92,8 @@ function App() {
       <StudentForm
         currentStudent={currentStudent}
         setCurrentStudent={setCurrentStudent}
-        blankStudent={blankStudent}
         createOrUpdateCurrentStudent={createOrUpdateCurrentStudent}
+        clearFields={clearFields}
       />
       <StudentList
         classes={classes}
