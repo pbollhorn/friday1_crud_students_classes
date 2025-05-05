@@ -59,9 +59,13 @@ function App() {
   }
 
   async function createStudent() {
+    
+    let studentToCreate = {...currentStudent};
+    delete studentToCreate.id;
+    
     await fetch("http://localhost:3000/students/", {
       method: "POST",
-      body: JSON.stringify(currentStudent),
+      body: JSON.stringify(studentToCreate),
     });
     setStudents(await fetchStudents());
   }
@@ -72,7 +76,6 @@ function App() {
 
   function createOrUpdateCurrentStudent() {
     if (currentStudent.id === "") {
-      setCurrentStudent({ ...currentStudent, id: crypto.randomUUID() });
       createStudent();
     } else {
       updateStudentById(currentStudent.id);

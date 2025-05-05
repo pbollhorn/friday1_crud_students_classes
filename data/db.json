@@ -1,17 +1,48 @@
 {
   "students": [
     {
-      "id": "",
-      "name": "Peter",
-      "age": "18",
-      "email": "p@p.p",
-      "classes": []
+      "id": "1",
+      "name": "Alice",
+      "age": 20,
+      "email": "alice@example.com",
+      "classes": [
+        1,
+        2
+      ]
     },
     {
-      "id": "",
-      "name": "ewr",
-      "age": "4",
-      "email": "232323",
+      "id": "2",
+      "name": "Bob",
+      "age": 20,
+      "email": "bob@example.com",
+      "classes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Charlizesad",
+      "age": 20,
+      "email": "char@example.comsd",
+      "classes": [
+        2
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Eric",
+      "age": 22,
+      "email": "eric@example.com",
+      "classes": [
+        1
+      ]
+    },
+    {
+      "id": "d72a",
+      "name": "Karla",
+      "age": "1",
+      "email": "dfgfdg",
       "classes": []
     }
   ],
